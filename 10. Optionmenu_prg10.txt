@@ -1,0 +1,72 @@
+--------------------------MENU----------------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/item1"
+    android:title="File"/>
+    <item
+        android:id="@+id/item2"
+        android:title="Edit">
+        <menu>
+            <item android:id="@+id/subitem1"
+                android:title="Cut"/>
+        <item android:id="@+id/subitem2"
+        android:title="Copy"/>
+    <item android:id="@+id/subitem3"
+        android:title="Paste"/>
+</menu>
+    </item>
+    <item
+        android:id="@+id/item3"
+        android:title="View"/>
+
+</menu>
+
+---------------------------Java-------------------------------------
+
+package com.example.optionmenu;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item1:
+                Toast.makeText(getApplicationContext(),"File selescted",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.item2:
+                Toast.makeText(getApplicationContext(),"Edit selescted",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.item3:
+                Toast.makeText(getApplicationContext(),"View selescted",Toast.LENGTH_LONG).show();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+
+
