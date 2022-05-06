@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstnum"
+        android:hint="Enter the Values"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/secondnum"
+        android:hint="Enter the Values"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/result"
+        android:hint="Result"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sum"
+        android:text="+"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mul"
+        android:text="*"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/div"
+        android:text="/"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/min"
+        android:text="-"/>
+    </LinearLayout>
+
+</LinearLayout>
+
+------------------------------------------------------------JAVA---------------------------------------------------------------------------------------
+
+package com.example.calculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+    Button sum,mul,div,min;
+    EditText firstnum,secondnum,result;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        sum=findViewById(R.id.sum);
+        mul=findViewById(R.id.mul);
+        div=findViewById(R.id.div);
+        min=findViewById(R.id.min);
+        firstnum=findViewById(R.id.firstnum);
+        secondnum=findViewById(R.id.secondnum);
+        result=findViewById(R.id.result);
+        sum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Double a=Double.parseDouble(firstnum.getText().toString());
+                Double b=Double.parseDouble(secondnum.getText().toString());
+                Double r=a + b;
+                result.setText(String.valueOf(r));
+            }
+        });
+        min.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Double a=Double.parseDouble(firstnum.getText().toString());
+                Double b=Double.parseDouble(secondnum.getText().toString());
+                Double r=a - b;
+                result.setText(String.valueOf(r));
+
+            }
+        });
+        mul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Double a=Double.parseDouble(firstnum.getText().toString());
+                Double b=Double.parseDouble(secondnum.getText().toString());
+                Double r=a * b;
+                result.setText(String.valueOf(r));
+
+            }
+        });
+        div.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Double a=Double.parseDouble(firstnum.getText().toString());
+                Double b=Double.parseDouble(secondnum.getText().toString());
+                Double r=a / b;
+                result.setText(String.valueOf(r));
+
+            }
+        });
+    }
+}
